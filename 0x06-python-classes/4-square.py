@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Define a class square"""
 
 
 class Square:
@@ -13,11 +14,12 @@ class Square:
 
     @property
     def size(self):
-        """Get/set the current size of the square."""
+        """set the current size of the square."""
         return (self.__size)
 
     @size.setter
     def size(self, value):
+        """set property of the square"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
