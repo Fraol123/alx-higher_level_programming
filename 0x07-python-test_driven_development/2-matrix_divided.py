@@ -18,41 +18,41 @@ def matrix_divided(matrix, div):
     Returns:
        A new matrix with the result of the division
     """
-    # checks if matrix is a list
+    # Checks if matrix is a list
     if not isinstance(matrix, list):
         raise TypeError("matrix must be a matrix (list of lists) of "
                         "integers/floats")
 
-    # checks if the first element in matrix is a list so len can be used
+    # Checks if the first element in matrix is a list so len can be used
     if isinstance(matrix[0], list):
         rowlen = len(matrix[0])
 
-    # checks for the format of a matrix
-    for mx in matrix:
-        # check if mx is a list
-        if not isinstance(mx, list):
-            raise TypeError("matrix must be a matrix (list of lists) of"
+    # Checking if matrix is formatted correctly
+    for mtx in matrix:
+
+        # Checks if mtx is a list
+        if not isinstance(mtx, list):
+            raise TypeError("matrix must be a matrix (list of lists) of "
                             "integers/floats")
 
-        # checks if the len of the row is the same
-        if len(mx) != rowlen:
+        # Checks if the length of each row is the same
+        if len(mtx) != rowlen:
             raise TypeError("Each row of the matrix must have the same size")
 
-        # checks the elements in the matrix to be int/float
-        for element in mx:
-            if not isinstance(element, (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists) of"
+        # Checks if the elements in the matrix are int or float
+        for elemnt in mtx:
+            if not isinstance(elemnt, (int, float)):
+                raise TypeError("matrix must be a matrix (list of lists) of "
                                 "integers/floats")
 
-        # check if div is a number
-        if not isinstance(div, (int, float)):
-            raise TypeError("div must be a number")
+    # Checks if div is a number
+    if not isinstance(div, (int, float)):
+        raise TypeError("div must be a number")
 
-        # check if div is 0
-        if div == 0:
-            raise ZeroDivisionError("division by zero")
+    # Checks if div is 0
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+    # Dividing original matrix and creating a new matrix
+    new_matrix = [[round(idx / div, 2) for idx in mtx] for mtx in matrix]
 
-        # dividing original matrix and creating a new matrix
-        new_matrix = [[round(idx/div, 2) for idx in mx] for mx in matrix]
-
-        return new_matrix
+    return new_matrix
