@@ -1,0 +1,53 @@
+The ``Say my name`` module
+==========================
+
+Using ``say_my_name``
+---------------------
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Check for correct output
+  >>> say_my_name("John", "Smith")
+  My name is John Smith
+
+# Check for correct output
+  >>> say_my_name("Walter", "White")
+  My name is Walter White
+
+# Check for missing 2nd argument
+  >>> say_my_name("Bob")
+  My name is Bob 
+
+# Check for non-string as second argument
+  >>> say_my_name("Bob", 24)
+  Traceback (most recent call last):
+      ...
+  TypeError: last_name must be a string
+
+# Check for non-string in first argument
+  >>> say_my_name(24, "Bob")
+  Traceback (most recent call last):
+      ...
+  TypeError: first_name must be a string
+
+# Check for non-string arguments in both
+  >>> say_my_name((0, 0), "Last")
+  Traceback (most recent call last):
+      ...
+  TypeError: first_name must be a string
+
+# Check for list with string in second argument
+  >>> say_my_name("Bob", ["hi", 5])
+  Traceback (most recent call last):
+      ...
+  TypeError: last_name must be a string
+
+# Check for empty string in both arguments
+  >>> say_my_name("", "")
+  My name is  
+
+# Check for missing both arguments 
+  >>> say_my_name() #doctest: +IGNORE_EXCEPTION_DETAIL
+  Traceback (most recent call last):
+      ...
+  TypeError:
