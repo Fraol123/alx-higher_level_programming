@@ -1,0 +1,50 @@
+The ``print_square`` Module
+==========================
+
+Using ``print_square``
+----------------------
+
+>>> print_square = __import__('4-print_square').print_square
+
+# Check for correct output
+  >>> print_square(4)
+  ####
+  ####
+  ####
+  ####
+
+# Check for correct output
+  >>> print_square(2)
+  ##
+  ##
+
+# Check for 0 size square
+  >>> print_square(0)
+
+# Check for size of 1 square
+  >>> print_square(1)
+  #
+
+# Check for negative size
+  >>> print_square(-1)
+  Traceback (most recent call last):
+      ...
+  ValueError: size must be >= 0
+
+# Check for non-integer
+  >>> print_square("k")
+  Traceback (most recent call last):
+      ...
+  TypeError: size must be an integer
+
+# Check for non-integer
+  >>> print_square(K)
+  Traceback (most recent call last):
+      ...
+  NameError: name 'K' is not defined
+
+# Check for missing argument
+  >>> print_square() #doctest: +IGNORE_EXCEPTION_DETAIL
+  Traceback (most recent call last):
+      ...
+  TypeError:
