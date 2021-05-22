@@ -1,0 +1,95 @@
+The ``text_indentation`` Module
+==========================
+
+Using ``text_indentation``
+----------------------
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Check for correct output
+
+  	>>> text_indentation("Hello.")
+	Hello.
+	<BLANKLINE>
+
+# checking for correct output
+
+        >>> text_indentation("Thise.?: is: new right?")
+	Thise.
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+	is:
+	<BLANKLINE>
+	new right?
+	<BLANKLINE>
+
+# checking for non-string inputs
+
+  	>>> text_indentation(20)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+# checking for tuples with a string		   
+
+  	>>> text_indentation(("ola", "hello"))
+	Traceback (most recent call last):
+	...
+        TypeError: text must be a string
+
+# checking for list with strings
+
+  	>>> text_indentation(["ola", "hello"])
+        Traceback (most recent call last):
+        ...
+        TypeError: text must be a string
+
+# checking for list with string
+
+  	>>> text_indentation(["hello"])
+        Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+# checking for dict with a string
+
+  	>>> text_indentation({"hello": "ola"})
+	Traceback (most recent call last):
+	...
+        TypeError: text must be a string
+
+# checking string with no punctuations
+
+  	>>> text_indentation("ola")
+	ola
+
+# checking for double string
+
+  	>>> text_indentation("Alx""Holberton")
+	AlxHolberton
+
+# checking for correct out put
+
+  	>>> text_indentation("Alx Holberton")
+	Alx Holberton
+
+# checking out put with extra space
+
+  	>>> text_indentation("Alx.     Holberton")
+	Alx.
+	<BLANKLINE>
+	Holberton
+
+# checking whitspace at the begining
+
+  	>>> text_indentation("     Alx.           Holberton.")
+	Alx.
+	<BLANKLINE>
+	Holberton.
+	<BLANKLINE>
+
+					
+  	 
