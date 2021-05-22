@@ -82,3 +82,13 @@ The function fails if infinity is given.
         >>> add_integer(2, float('inf'))
 	Traceback (most recent call last):
 	OverflowError: cannot convert float infinity to integer
+
+::
+
+the function with Nan given
+
+    	>>> add_integer(2, float("NaN"))
+	Traceback (most recent call last):
+	ValueError: cannot convert float NaN to integer
+
+::
