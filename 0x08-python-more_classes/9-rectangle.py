@@ -114,7 +114,7 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
-        """Returns new square instance.
+        """Returns a new  instance of rectangle as a square.
 
         Args:
            size(int) = size of new sequare
