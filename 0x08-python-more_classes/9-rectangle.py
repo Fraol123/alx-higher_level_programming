@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""module that computes Area and perimeter"""
+"""module that computes Area and perimeter."""
 
 
 class Rectangle:
