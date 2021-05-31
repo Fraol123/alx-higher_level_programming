@@ -1,0 +1,124 @@
+=========================
+How to use 7-base_gemotry
+=========================
+
+thise module defines 7-base_gemotery
+
+::
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
+	>>> type(bg)
+	<class '7-base_geometry.BaseGeometry'>
+
+::
+
+testing the two functions 
+
+all area:
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+::
+
+Integer validate with type integer:
+	>>> bg.integer_validator('age', 17)
+
+::
+
+Integer validate with type string:
+	>>> bg.integer_validator('age', '17')
+	Traceback (most recent call last):
+	...
+	TypeError: age must be an integer
+
+::
+
+Integer validate with type string:
+	>>> bg.integer_validator('name', 'ALX')
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
+::
+
+Integer validate with type bool:
+	>>> bg.integer_validator('name', True)
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
+::
+
+Integer validate with type float:
+	>>> bg.integer_validator('name', 12.5)
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
+::
+
+Integer validate with inf:
+	>>> bg.integer_validator('name', float('inf'))
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
+::
+
+Integer validate with negative numbers:
+	>>> bg.integer_validator('age', -4)
+	Traceback (most recent call last):
+	...
+	ValueError: age must be greater than 0
+
+::
+
+Integer validate with value 0:
+	>>> bg.integer_validator('age', 0)
+	Traceback (most recent call last):
+	...
+	ValueError: age must be greater than 0
+
+::
+
+Area with a parameter:
+     >>> bg.area(12)
+     Traceback (most recent call last):
+     ...
+     TypeError: area() takes 1 positional argument but 2 were given
+
+::
+
+Integer validate without arguments:
+	>>> bg.integer_validator()
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+::
+
+Integer validate with one argument:
+	>>> bg.integer_validator('name')
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+::
+
+Integer validate with extra argument:
+	>>> bg.integer_validator('name', 12, 'lol')
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() takes 3 positional arguments but 4 were given
+
+::
+
+Module docstring:
+       >>> doc = BaseGeometry = __import__('7-base_geometry').__doc__
+       >>> len(doc) > 1
+       True
+
+::
