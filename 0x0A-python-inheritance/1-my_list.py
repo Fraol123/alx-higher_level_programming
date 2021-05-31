@@ -2,7 +2,6 @@
 """module for sorting"""
 
 
-
 class MyList(list):
     """sub class of list"""
 
