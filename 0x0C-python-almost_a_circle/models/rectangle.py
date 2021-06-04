@@ -101,11 +101,29 @@ class Rectangle(Base):
                                                        self.x, self.y,
                                                        self.width, self.height)
 
-    def update(self, *args):
-        """argument defination
+    @staticmethod
+    def generate_setter(name, value):
+        """Return the setter in literal for do an evaluation"""
+        setter = 'self.{} = {}'.format(name, value)
+        return setter
 
+    def update(self, *args, **kwargs):
+        """argument defination
         Args:
            *args = argument collector
+           **kwargs = allows us to pass through keyword arguments.
         """
-
         attributes = ['id', 'width', 'height', 'x', 'y']
+
+        # better for loops with enu
+        for i, x in enumerate(args):
+            if i >= len(attributes):
+                return
+                # these works
+                self.__setattr__(attributes[i], x)
+
+        if args:
+            return
+        # for key and value
+        for k, v in kwargs.items():
+            self.__setattr__(k, v)
