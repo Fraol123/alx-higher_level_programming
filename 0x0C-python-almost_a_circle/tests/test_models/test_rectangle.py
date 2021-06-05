@@ -94,9 +94,60 @@ class TestRectangle_instantiation(unittest.TestCase):
         self.assertEqual(6, r.x)
 
 
+class TestRectangle_width(unittest.TestCase):
+    """unittest for initalization of width attribute"""
 
+    def test_None_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle(None, 2)
 
+    def test_str_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle("invalid", 2)
 
+    def test_float_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle(2.2, 2)
+
+    def test_complex_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle(complex(3), 2)
+
+    def test_dict_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle({'k': 2, 'm': 3}, 2)
+
+    def test_bool_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle(True, 2)
+
+    def test_list_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle([1,2,3], 2)
+
+    def test_tuple_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle((1,2,3), 2)
+
+    def test_set_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle({1,2,3}, 2)
+
+    def test_inf_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle(float('inf'), 2)
+
+    def test_nan_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle(float('nan'), 2)
+
+    def test_negative_width(self):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+                Rectangle(-1, 2)
+
+    def test_zero_width(self):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+                Rectangle(0, 2)
 
 
 
