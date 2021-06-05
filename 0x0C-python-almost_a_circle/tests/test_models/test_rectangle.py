@@ -14,8 +14,19 @@ class TestRectangle_instantiation(unittest.TestCase):
         with self.assertRaises(TypeError):
            Rectangle()
 
+    def test_one_arg(self):
+        with self.assertRaises(TypeError):
+            Rectangle(1)
 
+    def test_two_args(self):
+        r1 = Rectangle(10, 2)
+        r2 = Rectangle(2, 10)
+        self.assertEqual(r1.id, r2.id - 1)
 
+    def test_three_args(self):
+        r1 = Rectangle(2, 1, 3)
+        r2 = Rectangle(3, 1, 2)
+        self.assertEqual(r1.id, r2.id - 1)
 
 
 
