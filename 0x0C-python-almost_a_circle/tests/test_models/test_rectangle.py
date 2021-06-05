@@ -149,6 +149,60 @@ class TestRectangle_width(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
                 Rectangle(0, 2)
 
+class TestRectangle_height(unittest.TestCase):
+    """unittest for initalization of height attribute"""
+
+    def test_height_width(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(2, None)
+
+    def test_str_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle( 2, "invalid")
+
+    def test_float_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(2, 2.2)
+
+    def test_complex_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(2, complex(3))
+
+    def test_dict_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(2, {'k': 2, 'm': 3})
+
+    def test_bool_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(2, True)
+
+    def test_list_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(2, [1,2,3])
+
+    def test_tuple_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(2, (1,2,3))
+
+    def test_set_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(2, {1,2,3})
+
+    def test_inf_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(2, float('inf'))
+
+    def test_nan_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(2, float('nan'))
+
+    def test_negative_height(self):
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+                Rectangle(2, -1)
+
+    def test_zero_height(self):
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+                Rectangle(2, 0)
 
 
 
