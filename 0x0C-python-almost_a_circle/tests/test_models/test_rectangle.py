@@ -57,13 +57,41 @@ class TestRectangle_instantiation(unittest.TestCase):
         with self.assertRaises(AttributeError):
             print(Rectangle(2,3,4,2,1).__y)
 
+    def test_width_getter(self):
+        r = Rectangle(2,3,4,5,1)
+        self.assertEqual(2, r.width)
 
+    def test_width_setter(self):
+        r = Rectangle(3,7,7,3,1)
+        r.width = 6
+        self.assertEqual(6, r.width)
 
+    def test_height_getter(self):
+        r = Rectangle(2,3,4,2,1)
+        self.assertEqual(3, r.height)
 
+    def test_height_setter(self):
+        r = Rectangle(3,7,7,3,1)
+        r.height = 6
+        self.assertEqual(6, r.height)
 
+    def test_y_getter(self):
+        r = Rectangle(2,3,4,2,1)
+        self.assertEqual(2, r.y)
 
+    def test_y_setter(self):
+        r = Rectangle(3,7,7,3,1)
+        r.y = 6
+        self.assertEqual(6, r.y)
 
+    def test_x_getter(self):
+        r = Rectangle(2,3,4,2,1)
+        self.assertEqual(4, r.x)
 
+    def test_x_setter(self):
+        r = Rectangle(3,7,7,3,1)
+        r.x = 6
+        self.assertEqual(6, r.x)
 
 
 
