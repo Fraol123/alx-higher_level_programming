@@ -45,3 +45,17 @@ class Base:
             return []
 
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Return a class initiated with attr alredy set
+        Args:
+           dictionary = key/value pair attribute to intialize
+        """
+
+        if cls.__name__ == 'Rectangle':
+            dummy = cls(1, 1)
+        else:
+            dummy = cls(1)
+        dummy.update(**dictionary)
+        return dummy
