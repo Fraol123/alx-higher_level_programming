@@ -1,6 +1,8 @@
 #!/user/bin/python3
 import unittest
 import json
+import io
+import sys
 from models.rectangle  import Rectangle
 from models.base import Base
 
@@ -405,6 +407,34 @@ class TestRectangle_area(unittest.TestCase):
         r = Rectangle(2, 10, 1, 1, 1)
         with self.assertRaises(TypeError):
             r.area(1)
+
+class TestRectangle_stdout(unittest.TestCase):
+    """unittests for testing __str__ and display methods of rectangle class"""
+    
+
+    def hold_stdout(rect, method):
+        """hold and return text printed to stdout.
+
+        Args:
+           rect(Rectangle): the rectangle to print to stdout
+           method (str): the method to run on rect.
+        """
+
+        hold = io.StringIO()
+        sys.stdout = hold
+        if method == "print":
+            print(rect)
+        else:
+            rect.display()
+        sys.stdout = sys.__stdout__
+        return hold
+
+        # Test for __str__ method
+    def test_str_method_prinnt_width_height(self):
+        r = Rectangle(4, 6)
+        hold = TestRectangle_stdout.hold_stdout(r, "print")
+        correct = "[Rectangle] ({}) 0/0 - 4/6\n".format(r.id)
+        self.assertEqual(correct, hold.getvalue())
 
     if __name__ == "__main__":
         unittest.main()
