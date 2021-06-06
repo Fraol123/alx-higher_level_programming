@@ -306,7 +306,83 @@ class TestRectangle_y(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
                 Rectangle(1, 2, 1, -2)
 
+class TestRectangle_x(unittest.TestCase):
+    """unittest for initalization of x attribute"""
 
+    def test_None_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(1, 2, None)
+
+    def test_str_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle( 1, 2, "invalid", 2)
+
+    def test_float_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, 2.2, 3)
+
+    def test_complex_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, complex(3))
+
+    def test_dict_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, {'k': 2, 'm': 3}, 2)
+
+    def test_bool_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, True, 2)
+
+    def test_list_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, [1,2,3], 2)
+
+    def test_tuple_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, (1,2,3), 2)
+
+    def test_set_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, {1,2,3}, 2)
+
+    def test_inf_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, float('inf'), 2)
+
+    def test_nan_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, float('nan'), 2)
+
+    def test_negative_x(self):
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+                Rectangle(1, 2, -1, 2)
+
+class TestRectangle_order_of_initialization(unittest.TestCase):
+    """unittest for testing of Rectangle order of attribute initalize"""
+
+    def test_width_before_height(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("invalid width", "invalid height")
+
+    def test_width_before_x(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle( "invalid width", 2, "invalid x")
+
+    def test_width_before_y(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+                Rectangle("invalid width", 2, 3, "invalid y")
+
+    def test_height_before_x(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(1, "invalid height", "invalid x")
+
+    def test_height_before_y(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+                Rectangle(1, "invalid height", 2, "invalid y")
+
+    def test_x_before__y(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+                Rectangle(1, 2, "invalid x", "invalid y")
 
 
     if __name__ == "__main__":
