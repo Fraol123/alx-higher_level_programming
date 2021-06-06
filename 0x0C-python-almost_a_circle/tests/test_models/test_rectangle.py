@@ -255,7 +255,56 @@ class TestRectangle_x(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
                 Rectangle(1, 2, -1, 2)
 
+class TestRectangle_y(unittest.TestCase):
+    """unittest for initalization of y attribute"""
 
+    def test_None_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Rectangle(1, 2, 3, None)
+
+    def test_str_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle( 1, 2, 2, "invalid")
+
+    def test_float_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle(1, 2, 3, 2.2)
+
+    def test_complex_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle(1, 2, 3, complex(3))
+
+    def test_dict_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle(1, 2, 3, {'k': 2, 'm': 3})
+
+    def test_bool_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle(1, 2, 3, True)
+
+    def test_list_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle(1, 2, 3, [1,2,3])
+
+    def test_tuple_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle(1, 2, 3, (1,2,3))
+
+    def test_set_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle(1, 2, 3, {1,2,3})
+
+    def test_inf_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle(1, 2, 3, float('inf'))
+
+    def test_nan_y(self):
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+                Rectangle(1, 2, 3, float('nan'))
+
+    def test_negative_y(self):
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+                Rectangle(1, 2, 1, -2)
 
 
 
