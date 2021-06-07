@@ -490,5 +490,38 @@ class TestRectangle_update_args(unittest.TestCase):
         r.update(89, 2, 3, 4, 5)
         self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
 
+
+    def test_update_too_many_args(self):
+        """test too many args for update"""
+        r = Rectangle(1, 1, 0, 0, 1)
+        r.update(1, 1, 1, 1, 1, 2)
+
+        self.assertEqual(str(r), "[Rectangle] (1) 1/1 - 1/1")
+
+    def test_update_no_args(self):
+        """test no args for update"""
+        r = Rectangle(1, 1, 0, 0, 1)
+        r.update()
+
+        self.assertEqual(str(r), "[Rectangle] (1) 0/0 - 1/1")
+
+    def test_update_kwargs(self):
+        """Testing the update method with **kwargs"""
+        r = Rectangle(1, 1, 0, 0, 1)
+        self.assertEqual(str(r), "[Rectangle] (1) 0/0 - 1/1")
+
+        r.update(height=10)
+        self.assertEqual(str(r), "[Rectangle] (1) 0/0 - 1/10")
+
+        r.update(width=11, x=2)
+        self.assertEqual(str(r), "[Rectangle] (1) 2/0 - 11/10")
+
+        r.update(y=3, width=4, x=5, id=89)
+        self.assertEqual(str(r), "[Rectangle] (89) 5/3 - 4/10")
+
+        r.update(x=6, height=7, y=8, width=9)
+        self.assertEqual(str(r), "[Rectangle] (89) 6/8 - 9/7")
+
+
 if __name__ == "__main__":
     unittest.main()
