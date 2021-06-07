@@ -450,5 +450,22 @@ class TestRectangle_stdout(unittest.TestCase):
         r = Rectangle(13, 21, 2, 4, 7)
         self.assertEqual("[Rectangle] (7) 2/4 - 13/21", str(r))
 
+    # test display method
+    def test_display_width_height(self):
+        r = Rectangle(2, 3, 0, 0, 0)
+        hold = TestRectangle_stdout.hold_stdout(r, "display")
+        self.assertEqual("##\n##\n##\n", hold.getvalue())
+
+    def test_display_width_height_x(self):
+        r = Rectangle(3, 2, 1, 0, 1)
+        hold = TestRectangle_stdout.hold_stdout(r, "display")
+        self.assertEqual("###\n###\n", hold.getvalue())
+
+    def test_display_width_height_y(self):
+        r = Rectangle(4, 5, 0, 1, 0)
+        hold = TestRectangle_stdout.hold_stdout(r, "display")
+        display = "\n####\n####\n####\n####\n####\n"
+        self.assertEqual(display, hold.getvalue())
+
     if __name__ == "__main__":
         unittest.main()
