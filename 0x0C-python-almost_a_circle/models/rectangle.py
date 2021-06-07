@@ -96,10 +96,9 @@ class Rectangle(Base):
             print()
 
     def __str__(self):
-        """Return the print and string representation of rec"""
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
-                                                       self.x, self.y,
-                                                       self.width, self.height)
+        """Overriding str method from Base"""
+        return '[Rectangle] ({}) {}/{} - {}/{}' \
+            .format(self.id, self.x, self.y, self.width, self.height)
 
     @staticmethod
     def generate_setter(name, value):
@@ -108,28 +107,22 @@ class Rectangle(Base):
         return setter
 
     def update(self, *args, **kwargs):
-        """argument defination
-        Args:
-           *args = argument collector
-           **kwargs = allows us to pass through keyword arguments.
-        """
+        """Update the object with keyword-argument"""
         attributes = ['id', 'width', 'height', 'x', 'y']
 
-        # better for loops with enu
-        for i, x in enumerate(args):
-            if i >= len(attributes):
+        for idx, x in enumerate(args):
+            if idx >= len(attributes):
                 return
-                # these works
-                self.__setattr__(attributes[i], x)
+
+            self.__setattr__(attributes[idx], x)
 
         if args:
             return
-        # for key and value
+
         for k, v in kwargs.items():
             self.__setattr__(k, v)
 
     def to_dictionary(self):
-        """dict representation of rectangle"""
-        return {'id': self.id, 'width': self.width,
-                'height': self.height, 'x': self.x,
-                'y': self.y}
+        """Return the dictionary representation of a rectangle"""
+        return {'id': self.id, 'width': self.width, 'height': self.height,
+                'x': self.x, 'y': self.y}
