@@ -467,5 +467,28 @@ class TestRectangle_stdout(unittest.TestCase):
         display = "\n####\n####\n####\n####\n####\n"
         self.assertEqual(display, hold.getvalue())
 
-    if __name__ == "__main__":
-        unittest.main()
+class TestRectangle_update_args(unittest.TestCase):
+    """unittests for testing update args method of the rectangle class"""
+
+    def test_update_args(self):
+        """Testing the udpate method with *args"""
+        r = Rectangle(1, 1, 0, 0, 1)
+        self.assertEqual(str(r), "[Rectangle] (1) 0/0 - 1/1")
+
+        r.update(89)
+        self.assertEqual(str(r), "[Rectangle] (89) 0/0 - 1/1")
+
+        r.update(89, 2)
+        self.assertEqual(str(r), "[Rectangle] (89) 0/0 - 2/1")
+
+        r.update(89, 2, 3)
+        self.assertEqual(str(r), "[Rectangle] (89) 0/0 - 2/3")
+
+        r.update(89, 2, 3, 4)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/0 - 2/3")
+
+        r.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
+
+if __name__ == "__main__":
+    unittest.main()
