@@ -40,5 +40,13 @@ class TestSquare_instantiation(unittest.TestCase):
     def test_size_private(self):
         with self.assertRaises(AttributeError):
             print(Square(2, 3, 4, 1).__size)
+
+    def test_size_gitter(self):
+        self.assertEqual(2, Square(2, 3, 4, 5).size)
+
+    def test_size_setter(self):
+        s = Square(2, 3, 4, 2)
+        s.size = 4
+        self.assertEqual(4, s.size)
 if __name__ == "__main__":
     unittest.main()
