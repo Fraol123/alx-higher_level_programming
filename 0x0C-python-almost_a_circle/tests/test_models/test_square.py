@@ -48,5 +48,33 @@ class TestSquare_instantiation(unittest.TestCase):
         s = Square(2, 3, 4, 2)
         s.size = 4
         self.assertEqual(4, s.size)
+
+    def test_width_getter(self):
+        s = Square(4, 1, 9, 2)
+        s.size = 8
+        self.assertEqual(8, s.width)
+
+    def test_height_getter(self):
+        s = Square(4, 1, 9, 2)
+        s.size = 8
+        self.assertEqual(8, s.height)
+
+    def test_x_getter(self):
+        self.assertEqual(0, Square(10).x)
+
+    def test_y_getter(self):
+        self.assertEqual(0, Square(10).y)
+
+
+class TestSquare_size(unittest.TestCase):
+    """Unittest for testing size initialization of the square class."""
+
+    def test_None_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square(None)
+
+    def test_str_size(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("invalid")
 if __name__ == "__main__":
     unittest.main()
