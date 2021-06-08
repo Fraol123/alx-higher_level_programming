@@ -2,6 +2,9 @@
 
 import json
 import unittest
+import io
+import sys
+from models.base import Base
 from models.square import Square
 from models.rectangle import Rectangle
 
