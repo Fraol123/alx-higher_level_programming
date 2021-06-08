@@ -420,7 +420,6 @@ class TestRectangle_stdout(unittest.TestCase):
 
     def hold_stdout(rect, method):
         """hold and return text printed to stdout.
-
         Args:
            rect(Rectangle): the rectangle to print to stdout
            method (str): the method to run on rect.
