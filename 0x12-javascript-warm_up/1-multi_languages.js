@@ -1,8 +1,2 @@
 #!/usr/bin/node
-'user restricted';
-const myFirstLine  = "C is fun";
-const mySecondLine = "Python is Cool";
-const myThirdLine  = "JavaScript is amazing";
-console.log(myFirstLine);
-console.log(mySecondLine);
-console.log(myThirdLine); 
+console.log('C is fun\nPython is cool\nJavascript is amazing'); 
